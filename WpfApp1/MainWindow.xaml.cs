@@ -19,11 +19,13 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-            
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Button clicked!");
+            string inputText = InputTextBox.Text;
+            if (inputText.Length == 0) return;
+            TextListBox.Items.Add(inputText);
+            // MessageBox.Show("Button clicked!");
         }
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)

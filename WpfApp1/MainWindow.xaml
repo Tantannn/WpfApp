@@ -12,8 +12,15 @@
             <TextBlock Text="Hello, world!" FontSize="56" />
             <TextBlock>Just another "<TextBlock Text="Hello, world!" />" example, but with resources!</TextBlock>
         </StackPanel>
-        <Button HorizontalAlignment="Center" Height="30px" Width="100px" Click="ButtonBase_OnClick"
+        <TextBox x:Name="InputTextBox"
+                 HorizontalAlignment="Stretch"
+                 VerticalAlignment="Top"
+                 Margin="0,0,0,10"
+                 Height="30" />
+        <Button HorizontalAlignment="Center" Height="30px" Width="100px" Click="Button_Click"
                 Content="something" />
-        <Button VerticalAlignment="Bottom" Height="30px" Width="100px" Click="Button_Click" Content="something" />
+        <!-- <Button VerticalAlignment="Bottom" Height="30px" Width="100px" Click="Button_Click" Content="something" /> -->
+        <ListBox x:Name="TextListBox" Width="50px" Margin="0px 0px 0px 100px"
+                 VerticalAlignment="Bottom" />
     </Grid>
 </Window>
