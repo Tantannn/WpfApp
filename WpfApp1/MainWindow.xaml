@@ -6,10 +6,14 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+
     <Grid>
-        <Grid>
-            <Button Margin="300,329,300,74" Click="ButtonBase_OnClick" Content="something" />
-            <Button Margin="253,276,348,127" Click="Button_Click" Content="something" />
-        </Grid>
+        <StackPanel Margin="10">
+            <TextBlock Text="Hello, world!" FontSize="56" />
+            <TextBlock>Just another "<TextBlock Text="Hello, world!" />" example, but with resources!</TextBlock>
+        </StackPanel>
+        <Button HorizontalAlignment="Center" Height="30px" Width="100px" Click="ButtonBase_OnClick"
+                Content="something" />
+        <Button VerticalAlignment="Bottom" Height="30px" Width="100px" Click="Button_Click" Content="something" />
     </Grid>
 </Window>
