@@ -7,7 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Margin="300,329,300,74" Content="something"/>
-        <Button Margin="253,276,348,127" Content="something"/>
+        <Grid>
+            <Button Margin="300,329,300,74" Click="ButtonBase_OnClick" Content="something" />
+            <Button Margin="253,276,348,127" Click="Button_Click" Content="something" />
+        </Grid>
     </Grid>
 </Window>

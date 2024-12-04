@@ -25,5 +25,10 @@ namespace WpfApp1
         {
             MessageBox.Show("Button clicked!");
         }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
