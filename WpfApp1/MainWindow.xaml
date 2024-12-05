@@ -8,19 +8,32 @@
         Title="MainWindow" Height="450" Width="800">
 
     <Grid>
+        <!-- <Separator /> -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" /> <!-- For the Menu -->
+            <RowDefinition Height="*" />    <!-- For the main content -->
+        </Grid.RowDefinitions>
+
+        <!-- Menu -->
+        <Menu Grid.Row="0">
+            <MenuItem Header="File" PreviewMouseLeftButtonDown="MenuItem_PreviewMouseLeftButtonDown"  x:Name="MainMenu">
+                <MenuItem Header="Open" />
+                <MenuItem Header="Save" />
+            </MenuItem>
+        </Menu>
         <StackPanel Margin="10">
             <TextBlock Text="Hello, world!" FontSize="56" />
             <TextBlock>Just another "<TextBlock Text="Hello, world!" />" example, but with resources!</TextBlock>
+            <TextBox x:Name="InputTextBox"
+                     HorizontalAlignment="Stretch"
+                     VerticalAlignment="Top"
+                     Margin="0,0,0,10"
+                     Height="30" />
+            <Button HorizontalAlignment="Center" Height="30px" Width="100px" Click="Button_Click"
+                    Content="something" />
+            <!-- <Button VerticalAlignment="Bottom" Height="30px" Width="100px" Click="Button_Click" Content="something" /> -->
+            <ListBox x:Name="TextListBox" Width="50px" Margin="0px 50px 0px 100px"
+                     VerticalAlignment="Bottom" />
         </StackPanel>
-        <TextBox x:Name="InputTextBox"
-                 HorizontalAlignment="Stretch"
-                 VerticalAlignment="Top"
-                 Margin="0,0,0,10"
-                 Height="30" />
-        <Button HorizontalAlignment="Center" Height="30px" Width="100px" Click="Button_Click"
-                Content="something" />
-        <!-- <Button VerticalAlignment="Bottom" Height="30px" Width="100px" Click="Button_Click" Content="something" /> -->
-        <ListBox x:Name="TextListBox" Width="50px" Margin="0px 0px 0px 100px"
-                 VerticalAlignment="Bottom" />
     </Grid>
 </Window>
