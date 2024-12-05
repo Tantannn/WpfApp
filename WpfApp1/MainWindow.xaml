@@ -22,6 +22,7 @@
             </MenuItem>
         </Menu>
         <StackPanel Margin="10">
+        <local:CustomInputControl x:Name="CustomInputControlInstance" HorizontalAlignment="Center" VerticalAlignment="Center" />
             <TextBlock Text="Hello, world!" FontSize="56" />
             <TextBlock>Just another "<TextBlock Text="Hello, world!" />" example, but with resources!</TextBlock>
             <TextBox x:Name="InputTextBox"

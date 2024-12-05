@@ -20,7 +20,15 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
+            CustomInputControlInstance.TextSubmitted += CustomInputControl_TextSubmitted;
         }
+
+        private void CustomInputControl_TextSubmitted(object sender, string inputText)
+        {
+            // Add the submitted text to the ListBox
+            TextListBox.Items.Add(inputText);
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string inputText = InputTextBox.Text;
@@ -53,7 +61,7 @@ namespace WpfApp1
         //     };
         // }
 
-        private void MenuItem_PreviewMouseLeftButtonDown (object sender, MouseButtonEventArgs e)
+        private void MenuItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Debug.WriteLine(sender);
 
