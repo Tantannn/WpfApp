@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 D:\work-backup\WpfApp\WpfApp1\App.xaml
-21263293466
+5-1550267422
 
-5205330493
+81367006920
 198-556154604
-CustomInputControl.xaml;MainWindow.xaml;
+Controls\CustomInputControl.xaml;Frames\Page1.xaml;Frames\Page2.xaml;MainWindow.xaml;Window\Window1.xaml;
 
 False
 

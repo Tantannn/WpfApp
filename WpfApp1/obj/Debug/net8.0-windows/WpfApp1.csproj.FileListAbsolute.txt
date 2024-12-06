@@ -39,6 +39,12 @@ D:\work-backup\WpfApp\WpfApp1\obj\Debug\net8.0-windows\refint\WpfApp1.dll
 D:\work-backup\WpfApp\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.pdb
 D:\work-backup\WpfApp\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.genruntimeconfig.cache
 D:\work-backup\WpfApp\WpfApp1\obj\Debug\net8.0-windows\ref\WpfApp1.dll
-D:\work-backup\WpfApp\WpfApp1\obj\Debug\net8.0-windows\CustomInputControl.baml
-D:\work-backup\WpfApp\WpfApp1\obj\Debug\net8.0-windows\CustomInputControl.g.cs
 D:\work-backup\WpfApp\WpfApp1\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+D:\work-backup\WpfApp\WpfApp1\obj\Debug\net8.0-windows\Controls\CustomInputControl.baml
+D:\work-backup\WpfApp\WpfApp1\obj\Debug\net8.0-windows\Controls\CustomInputControl.g.cs
+D:\work-backup\WpfApp\WpfApp1\obj\Debug\net8.0-windows\Frames\Page1.g.cs
+D:\work-backup\WpfApp\WpfApp1\obj\Debug\net8.0-windows\Frames\Page2.g.cs
+D:\work-backup\WpfApp\WpfApp1\obj\Debug\net8.0-windows\Window\Window1.g.cs
+D:\work-backup\WpfApp\WpfApp1\obj\Debug\net8.0-windows\Frames\Page1.baml
+D:\work-backup\WpfApp\WpfApp1\obj\Debug\net8.0-windows\Frames\Page2.baml
+D:\work-backup\WpfApp\WpfApp1\obj\Debug\net8.0-windows\Window\Window1.baml

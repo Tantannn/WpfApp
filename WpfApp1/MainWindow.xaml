@@ -35,6 +35,7 @@
             <!-- <Button VerticalAlignment="Bottom" Height="30px" Width="100px" Click="Button_Click" Content="something" /> -->
             <ListBox x:Name="TextListBox" Width="50px" Margin="0px 50px 0px 100px"
                      VerticalAlignment="Bottom" />
+        <Button Height="35px" Width="100px" Content="What?" Click="What_Button"/>
         </StackPanel>
     </Grid>
 </Window>

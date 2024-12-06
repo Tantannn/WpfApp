@@ -9,13 +9,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using WpfApp1.Window;
 
 namespace WpfApp1
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : System.Windows.Window
     {
         public MainWindow()
         {
@@ -63,7 +64,7 @@ namespace WpfApp1
 
         private void MenuItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Debug.WriteLine(sender);
+            Debug.WriteLine(sender.ToString());
 
             if (sender is MenuItem menuItem)
             {
@@ -71,6 +72,12 @@ namespace WpfApp1
                 // Prevent further event handling to avoid default hover behavior
                 e.Handled = true;
             }
+        }
+        // https://dummyapi.online/api/movies
+        private void What_Button(object sender, RoutedEventArgs e)
+        {
+            Window1 window1 = new Window1();
+            window1.Show();
         }
     }
 }
