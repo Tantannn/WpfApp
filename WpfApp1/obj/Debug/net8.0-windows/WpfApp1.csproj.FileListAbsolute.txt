@@ -48,3 +48,6 @@ D:\work-backup\WpfApp\WpfApp1\obj\Debug\net8.0-windows\Window\Window1.g.cs
 D:\work-backup\WpfApp\WpfApp1\obj\Debug\net8.0-windows\Frames\Page1.baml
 D:\work-backup\WpfApp\WpfApp1\obj\Debug\net8.0-windows\Frames\Page2.baml
 D:\work-backup\WpfApp\WpfApp1\obj\Debug\net8.0-windows\Window\Window1.baml
+D:\work-backup\WpfApp\WpfApp1\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+D:\work-backup\WpfApp\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.csproj.AssemblyReference.cache
+D:\work-backup\WpfApp\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.csproj.Up2Date

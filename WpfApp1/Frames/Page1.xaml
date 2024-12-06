@@ -9,6 +9,12 @@
     <StackPanel>
         <TextBlock>helllooooooooooooooooooooo page 1</TextBlock>
         <Button Content="Go to Page 2" Click="GoToPage2_Click" />
+        <Button Content="Open file" Click="Openfile" />
         <TextBlock Text="Welcome to Page 1!" />
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <DataGrid x:Name="DataGrid" AutoGenerateColumns="True" CanUserAddRows="False" IsReadOnly="True"
+                      VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="300" />
+        </ScrollViewer>
+
     </StackPanel>
 </Page>
