@@ -9,6 +9,6 @@
     <StackPanel>
         <TextBlock Text="Welcome to Page 2!" />
         <Button Content="Go back to Page 1" Click="GoToPage1_Click" />
-        <TextBlock>haefadfa page 22222222222</TextBlock>
+        <TextBlock x:Name="CpuUsageTextBlock" />
     </StackPanel>
 </Page>
