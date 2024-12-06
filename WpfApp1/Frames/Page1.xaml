@@ -12,9 +12,10 @@
         <Button Content="Open file" Click="Openfile" />
         <TextBlock Text="Welcome to Page 1!" />
         <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <DataGrid x:Name="DataGrid" AutoGenerateColumns="True" CanUserAddRows="False" IsReadOnly="True"
+            <DataGrid x:Name="DataGrid" AutoGenerateColumns="True" CanUserAddRows="False" IsReadOnly="False"
                       VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="300" />
         </ScrollViewer>
+        <Button Content="Save" Click="Savefile" />
 
     </StackPanel>
 </Page>

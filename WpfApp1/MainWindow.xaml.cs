@@ -21,7 +21,7 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-            CustomInputControlInstance.TextSubmitted += CustomInputControl_TextSubmitted;
+            CustomInputControlInstance.TextSubmitted += CustomInputControl_TextSubmitted!;
         }
 
         private void CustomInputControl_TextSubmitted(object sender, string inputText)

@@ -10,11 +10,11 @@ public partial class Page2 : Page
     public Page2()
     {
         InitializeComponent();
-        DispatcherTimer timer = new DispatcherTimer
+        var timer = new DispatcherTimer
         {
             Interval = TimeSpan.FromMilliseconds(1000) // Update every second
         };
-        timer.Tick += Timer_Tick;
+        timer.Tick += Timer_Tick!;
         timer.Start();
     }
 
@@ -28,7 +28,7 @@ public partial class Page2 : Page
        var pc = new PerformanceCounter ("Memory", "Available MBytes");
         // Debug.WriteLine(pc.NextValue());
         // Get CPU usage and update the TextBlock
-        float cpuUsage = pc.NextValue();
-        CpuUsageTextBlock.Text = $"Total RAM: {cpuUsage:0.00}  MB\\n\\n";
+        var cpuUsage = pc.NextValue();
+        CpuUsageTextBlock.Text = $"Total RAM: {cpuUsage:0.00}  MB";
     }
 }
