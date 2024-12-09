@@ -1,8 +1,7 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
-using WpfApp1.Frames;
+using WpfApp1.Views.Frames;
 
-namespace WpfApp1.Window;
+namespace WpfApp1.Views;
 
 public partial class Window1 : System.Windows.Window
 {

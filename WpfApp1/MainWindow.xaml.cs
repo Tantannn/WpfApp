@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Collections.ObjectModel;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -9,7 +10,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
-using WpfApp1.Window;
+using WpfApp1.ViewModels;
+using WpfApp1.Views;
 
 namespace WpfApp1
 {
@@ -47,7 +49,9 @@ namespace WpfApp1
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Button clicked!");
+
+            var window2 = new Window2();
+            window2.Show();
         }
 
         // private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -78,6 +82,11 @@ namespace WpfApp1
         {
             Window1 window1 = new Window1();
             window1.Show();
+        }
+
+        private void ComboBox1(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

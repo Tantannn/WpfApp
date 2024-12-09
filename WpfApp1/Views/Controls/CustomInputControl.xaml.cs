@@ -1,11 +1,11 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace WpfApp1
+namespace WpfApp1.Views.Controls
 {
     public partial class CustomInputControl : UserControl
     {
-        public event EventHandler<string> TextSubmitted; // Event to pass text to MainWindow
+        public event EventHandler<string>? TextSubmitted; // Event to pass text to MainWindow
         public CustomInputControl()
         {
             InitializeComponent();

@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
 
-namespace WpfApp1.Frames;
+namespace WpfApp1.Views.Frames;
 
 public partial class Page2 : Page
 {
@@ -20,14 +20,12 @@ public partial class Page2 : Page
 
     private void GoToPage1_Click(object sender, RoutedEventArgs e)
     {
-        this.NavigationService?.Navigate(new Page1());
+        NavigationService?.Navigate(new Page1());
     }
 
     private void Timer_Tick(object sender, EventArgs e)
     {
-       var pc = new PerformanceCounter ("Memory", "Available MBytes");
-        // Debug.WriteLine(pc.NextValue());
-        // Get CPU usage and update the TextBlock
+        var pc = new PerformanceCounter("Memory", "Available MBytes");
         var cpuUsage = pc.NextValue();
         CpuUsageTextBlock.Text = $"Total RAM: {cpuUsage:0.00}  MB";
     }

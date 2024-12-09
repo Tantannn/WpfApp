@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
+        xmlns:controls="clr-namespace:WpfApp1.Views.Controls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="700" Width="800">
 
     <Grid>
         <!-- <Separator /> -->
@@ -22,7 +23,7 @@
             </MenuItem>
         </Menu>
         <StackPanel Margin="10">
-        <local:CustomInputControl x:Name="CustomInputControlInstance" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <controls:CustomInputControl x:Name="CustomInputControlInstance" HorizontalAlignment="Center" VerticalAlignment="Center" />
             <TextBlock Text="Hello, world!" FontSize="56" />
             <TextBlock>Just another "<TextBlock Text="Hello, world!" />" example, but with resources!</TextBlock>
             <TextBox x:Name="InputTextBox"
@@ -32,10 +33,17 @@
                      Height="30" />
             <Button HorizontalAlignment="Center" Height="30px" Width="100px" Click="Button_Click"
                     Content="something" />
+            <Button HorizontalAlignment="Center" Height="30px" Width="100px" Click="ButtonBase_OnClick"
+                    Content="window2" />
             <!-- <Button VerticalAlignment="Bottom" Height="30px" Width="100px" Click="Button_Click" Content="something" /> -->
             <ListBox x:Name="TextListBox" Width="50px" Margin="0px 50px 0px 100px"
                      VerticalAlignment="Bottom" />
         <Button Height="35px" Width="100px" Content="What?" Click="What_Button"/>
+        <ComboBox Height="23" Margin="0 50px" Name="ComboBox1" Width="120">
+            <ComboBoxItem Content="Alice"/>
+            <ComboBoxItem Content="Bob"/>
+            <ComboBoxItem Content="Charlie"/>
+        </ComboBox>
         </StackPanel>
     </Grid>
 </Window>
