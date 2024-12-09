@@ -84,9 +84,9 @@ namespace WpfApp1
             window1.Show();
         }
 
-        private void ComboBox1(object sender, RoutedEventArgs e)
-        {
-            
-        }
+        // private void ComboBox1(object sender, RoutedEventArgs e)
+        // {
+        //     
+        // }
     }
 }
