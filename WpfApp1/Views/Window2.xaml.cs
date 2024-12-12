@@ -26,10 +26,11 @@ public partial class Window2 : System.Windows.Window
             var data = await FetchApiDataAsync("https://dummyapi.online/api/movies");
             // var currentDataTable = JsonConvert.DeserializeObject<DataTable>(data);
             DataGrid.ItemsSource = data;
-            var movies = new List<MovieData>
-            {
-                
-            };
+            if (data != null)
+                foreach (var movie in data)
+                {
+                    new List<MovieData>().Add(movie);
+                }
         }
         catch (Exception ex)
         {

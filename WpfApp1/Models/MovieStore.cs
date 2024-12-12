@@ -1,10 +1,11 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using WpfApp1.ViewModels;
 
 public class MovieStore: INotifyPropertyChanged
 {
-    private ObservableCollection<MovieData> _movies = new ObservableCollection<MovieData>();
+    private ObservableCollection<MovieData> _movies = [];
     public ObservableCollection<MovieData> Movies
     {
         get => _movies;
