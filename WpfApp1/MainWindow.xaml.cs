@@ -83,10 +83,15 @@ namespace WpfApp1
             Window1 window1 = new Window1();
             window1.Show();
         }
-
-        // private void ComboBox1(object sender, RoutedEventArgs e)
-        // {
-        //     
-        // }
+        
+        private void ComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ComboBox1.SelectedItem is ComboBoxItem selectedItem)
+            {
+                string? selectedValue = selectedItem.Content.ToString();
+                TextListBox.Items.Clear();
+                TextListBox.Items.Add(selectedValue);
+            }
+        }
     }
 }

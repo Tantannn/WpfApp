@@ -15,8 +15,8 @@ namespace WpfApp1.Views.Controls
         {
             string inputText = InputTextBox.Text;
             TextSubmitted?.Invoke(this, inputText); // Pass the input text to the event handler
-
             MessageBox.Show($"You entered: {inputText}", "Input Text");
         }
+
     }
 }

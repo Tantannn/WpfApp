@@ -36,10 +36,10 @@
             <Button HorizontalAlignment="Center" Height="30px" Width="100px" Click="ButtonBase_OnClick"
                     Content="window2" />
             <!-- <Button VerticalAlignment="Bottom" Height="30px" Width="100px" Click="Button_Click" Content="something" /> -->
-            <ListBox x:Name="TextListBox" Width="50px" Margin="0px 50px 0px 100px"
+            <ListBox x:Name="TextListBox" MinWidth="50px" Height="20px" Margin="0px 50px 0px 100px"
                      VerticalAlignment="Bottom" />
         <Button Height="35px" Width="100px" Content="What?" Click="What_Button"/>
-        <ComboBox Height="23" Margin="0 50px" Name="ComboBox1" Width="120">
+        <ComboBox Height="23" Margin="0 50px" Name="ComboBox1" SelectionChanged="ComboBox1_SelectionChanged" Width="120">
             <ComboBoxItem Content="Alice"/>
             <ComboBoxItem Content="Bob"/>
             <ComboBoxItem Content="Charlie"/>
