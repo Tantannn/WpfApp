@@ -14,7 +14,7 @@ namespace WpfApp1.Views.Controls
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string inputText = InputTextBox.Text;
-            TextSubmitted?.Invoke(this, inputText); // Pass the input text to the event handler
+            TextSubmitted?.Invoke(this, inputText + "hello"); // Pass the input text to the event handler
             MessageBox.Show($"You entered: {inputText}", "Input Text");
         }
 

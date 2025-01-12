@@ -22,7 +22,7 @@
                 <MenuItem Header="Save" />
             </MenuItem>
         </Menu>
-        <StackPanel Margin="10">
+        <StackPanel Grid.Row="0" Margin="10">
         <controls:CustomInputControl x:Name="CustomInputControlInstance" HorizontalAlignment="Center" VerticalAlignment="Center" />
             <TextBlock Text="Hello, world!" FontSize="56" />
             <TextBlock>Just another "<TextBlock Text="Hello, world!" />" example, but with resources!</TextBlock>
@@ -36,7 +36,7 @@
             <Button HorizontalAlignment="Center" Height="30px" Width="100px" Click="ButtonBase_OnClick"
                     Content="window2" />
             <!-- <Button VerticalAlignment="Bottom" Height="30px" Width="100px" Click="Button_Click" Content="something" /> -->
-            <ListBox x:Name="TextListBox" MinWidth="50px" Height="20px" Margin="0px 50px 0px 100px"
+            <ListBox x:Name="TextListBox" Width="100px" MinHeight="50px" Margin="0px 50px 0px 100px"
                      VerticalAlignment="Bottom" />
         <Button Height="35px" Width="100px" Content="What?" Click="What_Button"/>
         <ComboBox Height="23" Margin="0 50px" Name="ComboBox1" SelectionChanged="ComboBox1_SelectionChanged" Width="120">
