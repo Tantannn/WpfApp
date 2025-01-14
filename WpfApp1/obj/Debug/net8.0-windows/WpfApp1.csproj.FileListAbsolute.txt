@@ -68,3 +68,5 @@ D:\code\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Views\Frames\Page1.baml
 D:\code\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Views\Frames\Page2.baml
 D:\code\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.sourcelink.json
 D:\code\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.csproj.Up2Date
+D:\code\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Views\Controls\InputControl.g.cs
+D:\code\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Views\Controls\InputControl.baml

@@ -10,5 +10,47 @@
         <TextBlock Text="Welcome to Page 2!" />
         <Button Content="Go back to Page 1" Click="GoToPage1_Click" />
         <TextBlock x:Name="CpuUsageTextBlock" />
+        <Viewport3D>
+            <!-- Camera -->
+            <Viewport3D.Camera>
+                <PerspectiveCamera Position="0, 0, 5" LookDirection="0, 0, -1" UpDirection="0, 1, 0" FieldOfView="60" />
+            </Viewport3D.Camera>
+
+            <!-- Light -->
+            <ModelVisual3D>
+                <ModelVisual3D.Content>
+                    <AmbientLight Color="White" />
+                </ModelVisual3D.Content>
+            </ModelVisual3D>
+
+            <!-- 3D Cube -->
+            <ModelVisual3D>
+                <ModelVisual3D.Content>
+                    <GeometryModel3D>
+                        <!-- Geometry -->
+                        <GeometryModel3D.Geometry>
+                            <MeshGeometry3D
+                                Positions="-1,-1,-1  1,-1,-1  1,1,-1  -1,1,-1  
+                                                                 -1,-1,1   1,-1,1   1,1,1   -1,1,1"
+                                TriangleIndices="0,1,2  0,2,3  
+                                                                      4,5,6  4,6,7  
+                                                                      0,4,7  0,7,3  
+                                                                      1,5,6  1,6,2  
+                                                                      3,2,6  3,6,7  
+                                                                      0,1,5  0,5,4" />
+                        </GeometryModel3D.Geometry>
+
+                        <!-- Material -->
+                        <GeometryModel3D.Material>
+                            <DiffuseMaterial>
+                                <DiffuseMaterial.Brush>
+                                    <SolidColorBrush Color="Blue" />
+                                </DiffuseMaterial.Brush>
+                            </DiffuseMaterial>
+                        </GeometryModel3D.Material>
+                    </GeometryModel3D>
+                </ModelVisual3D.Content>
+            </ModelVisual3D>
+        </Viewport3D>
     </StackPanel>
 </Page>
