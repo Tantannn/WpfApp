@@ -12,6 +12,7 @@ using System.Windows.Shapes;
 using System.Diagnostics;
 using WpfApp1.ViewModels;
 using WpfApp1.Views;
+using HelixToolkit.Wpf;
 
 namespace WpfApp1
 {
@@ -34,12 +35,12 @@ namespace WpfApp1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string inputText = InputTextBox.Text;
+            var inputText = InputTextBox.Text;
             if (inputText.Length == 0) return;
             TextListBox.Items.Add(inputText);
             // MessageBox.Show("Button clicked!");
 
-            MenuItem newMenuItem = new MenuItem
+            var newMenuItem = new MenuItem
             {
                 Header = inputText
             };
@@ -80,7 +81,7 @@ namespace WpfApp1
         // https://dummyapi.online/api/movies
         private void What_Button(object sender, RoutedEventArgs e)
         {
-            Window1 window1 = new Window1();
+            var window1 = new Window1();
             window1.Show();
         }
         
@@ -88,10 +89,11 @@ namespace WpfApp1
         {
             if (ComboBox1.SelectedItem is ComboBoxItem selectedItem)
             {
-                string? selectedValue = selectedItem.Content.ToString();
+                var selectedValue = selectedItem.Content.ToString();
                 TextListBox.Items.Clear();
                 TextListBox.Items.Add(selectedValue);
             }
         }
     }
 }
+
