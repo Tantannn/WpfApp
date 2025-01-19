@@ -94,6 +94,12 @@ namespace WpfApp1
                 TextListBox.Items.Add(selectedValue);
             }
         }
+
+        private void Open_3D_Stuffs(object sender, RoutedEventArgs e)
+        {
+            var window3 = new Window3();
+            window3.Show();
+        }
     }
 }
 

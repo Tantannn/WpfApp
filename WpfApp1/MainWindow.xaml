@@ -39,6 +39,7 @@
             <ListBox x:Name="TextListBox" Width="100px" MinHeight="50px" Margin="0px 50px 0px 100px"
                      VerticalAlignment="Bottom" />
         <Button Height="35px" Width="100px" Content="What?" Click="What_Button"/>
+        <Button Height="35px" Width="100px" Content="3D stuffs" Click="Open_3D_Stuffs"/>
         <ComboBox Height="23" Margin="0 50px" Name="ComboBox1" SelectionChanged="ComboBox1_SelectionChanged" Width="120">
             <ComboBoxItem Content="Alice"/>
             <ComboBoxItem Content="Bob"/>

@@ -71,3 +71,5 @@ D:\code\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\WpfApp1.csproj.Up2Date
 D:\code\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Views\Controls\InputControl.g.cs
 D:\code\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Views\Controls\InputControl.baml
 D:\code\WpfApp1\WpfApp1\bin\Debug\net8.0-windows\HelixToolkit.Wpf.dll
+D:\code\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Views\Window3.g.cs
+D:\code\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Views\Window3.baml

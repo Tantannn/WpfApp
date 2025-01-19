@@ -5,7 +5,6 @@ using System.Windows;
 using Newtonsoft.Json;
 using WpfApp1.ViewModels;
 using JsonSerializer = System.Text.Json.JsonSerializer;
-
 namespace WpfApp1.Views;
 
 public partial class Window2 : System.Windows.Window
