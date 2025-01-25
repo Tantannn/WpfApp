@@ -12,7 +12,31 @@
             <ColumnDefinition Width="350" /> <!-- Or Auto -->
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Button Content="Load 3D Model" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" Click="LoadModelButton_Click" />
+        <StackPanel
+            Grid.Column="0" HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Orientation="Vertical">
+            <TextBlock Foreground="White">Loading Model</TextBlock>
+            <ProgressBar
+                Grid.Row="1"
+                Width="200"
+                Height="30"
+                IsIndeterminate="True" />
+            <Menu
+                Grid.Row="0"
+                Height="20"
+                VerticalAlignment="Top">
+                <MenuItem Header="File">
+                    <MenuItem Command="{Binding LoadModelButton_Click}" Header="Open File" />
+                    <MenuItem Command="{Binding ExportCommand}" Header="Export" />
+                </MenuItem>
+                <MenuItem Header="Edit">
+                    <MenuItem Command="{Binding CopyAsBitmapCommand}" Header="Copy As Bitmap (Window Size)" />
+                    <MenuItem Command="{Binding CopyAsHiresBitmapCommand}"
+                              Header="Copy as Hiresolution Bitmap (1920x1080)" />
+                </MenuItem>
+            </Menu>
+        </StackPanel>
         <helix:HelixViewport3D x:Name="HelixViewport3D"  Grid.Column="1">
             <!-- Camera -->
             <helix:HelixViewport3D.Camera>

@@ -1,8 +1,8 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media.Media3D;
 using HelixToolkit.Wpf;
 using Microsoft.Win32;
-
 namespace WpfApp1.Views;
 
 public partial class Window3 : System.Windows.Window
@@ -10,15 +10,20 @@ public partial class Window3 : System.Windows.Window
     public Window3()
     {
         InitializeComponent();
+        // LoadModelCommand = new RelayCommand(LoadModelButton_Click);
     }
+    
+    public ICommand LoadModelCommand { get; set; }
 
-    private void LoadModelButton_Click(object sender, RoutedEventArgs e)
+
+    private void LoadModelButton_Click()
     {
         var openFileDialog = new OpenFileDialog
         {
             Title = "Select a 3D Model",
             Filter = "3D Model Files (*.obj;*.stl;*.3ds;*.ply)|*.obj;*.stl;*.3ds;*.ply|All Files (*.*)|*.*"
         };
+        
         
         if (openFileDialog.ShowDialog() == true)
         {
