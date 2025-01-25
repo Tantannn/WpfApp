@@ -8,8 +8,6 @@ namespace WpfApp1
     /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application
-
     {
-        Boolean hello = true;
     }
 }
