@@ -11,13 +11,12 @@ public partial class Window3 : System.Windows.Window
     public Window3()
     {
         InitializeComponent();
-        OpenFileCommand = new RelayCommand(LoadModelButton_Click);
         // LoadModelCommand = new RelayCommand(LoadModelButton_Click);
     }
     
 
 
-    private void LoadModelButton_Click()
+    private void LoadModelButton_Click(object sender, RoutedEventArgs routedEventArgs)
     {
         var openFileDialog = new OpenFileDialog
         {
