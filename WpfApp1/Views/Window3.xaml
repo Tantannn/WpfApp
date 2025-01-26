@@ -9,36 +9,26 @@
         Title="Window3" Height="550" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="350" /> <!-- Or Auto -->
+            <ColumnDefinition Width="350" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <!-- <Button Click="LoadModelButton_Click"></Button> -->
-        <StackPanel
-            Grid.Column="0" HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Orientation="Vertical">
+        
+        <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
             <TextBlock Foreground="White">Loading Model</TextBlock>
-            <ProgressBar
-                Grid.Row="1"
-                Width="200"
-                Height="30"
-                IsIndeterminate="True" />
-            <Menu
-                Grid.Row="0"
-                Height="20"
-                VerticalAlignment="Top">
+            <ProgressBar Width="200" Height="30" IsIndeterminate="True" />
+            <Menu VerticalAlignment="Top">
                 <MenuItem Header="File">
                     <MenuItem Click="LoadModelButton_Click" Header="Open File" />
                     <MenuItem Command="{Binding ExportCommand}" Header="Export" />
                 </MenuItem>
                 <MenuItem Header="Edit">
                     <MenuItem Command="{Binding CopyAsBitmapCommand}" Header="Copy As Bitmap (Window Size)" />
-                    <MenuItem Command="{Binding CopyAsHiresBitmapCommand}"
-                              Header="Copy as Hiresolution Bitmap (1920x1080)" />
+                    <MenuItem Command="{Binding CopyAsHiresBitmapCommand}" Header="Copy as Hiresolution Bitmap (1920x1080)" />
                 </MenuItem>
             </Menu>
         </StackPanel>
-        <helix:HelixViewport3D x:Name="HelixViewport3D"  Grid.Column="1">
+
+        <helix:HelixViewport3D x:Name="HelixViewport3D" Grid.Column="1">
             <!-- Camera -->
             <helix:HelixViewport3D.Camera>
                 <PerspectiveCamera Position="0, 0, 5" LookDirection="0, 0, -1" UpDirection="0, 1, 0" FieldOfView="45" />
@@ -46,8 +36,6 @@
 
             <!-- Lighting -->
             <helix:DefaultLights />
-
-            <!-- 3D Object -->
         </helix:HelixViewport3D>
     </Grid>
 </Window>
