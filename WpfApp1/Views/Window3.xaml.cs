@@ -7,13 +7,14 @@ namespace WpfApp1.Views;
 
 public partial class Window3 : System.Windows.Window
 {
+    public ICommand OpenFileCommand { get; }
     public Window3()
     {
         InitializeComponent();
+        OpenFileCommand = new RelayCommand(LoadModelButton_Click);
         // LoadModelCommand = new RelayCommand(LoadModelButton_Click);
     }
     
-    public ICommand LoadModelCommand { get; set; }
 
 
     private void LoadModelButton_Click()
@@ -23,7 +24,11 @@ public partial class Window3 : System.Windows.Window
             Title = "Select a 3D Model",
             Filter = "3D Model Files (*.obj;*.stl;*.3ds;*.ply)|*.obj;*.stl;*.3ds;*.ply|All Files (*.*)|*.*"
         };
-        
+    // public RelayCommand(Action execute, Func<bool> canExecute = null)
+    // {
+    //     _execute = execute ?? throw new ArgumentNullException(nameof(execute));
+    //     _canExecute = canExecute;
+    // }
         
         if (openFileDialog.ShowDialog() == true)
         {
