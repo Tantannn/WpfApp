@@ -9,6 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="HelixToolkit.SharpDX.Core" Version="2.26.0" />
+    <PackageReference Include="HelixToolkit.SharpDX.Core.Wpf" Version="2.26.0" />
     <PackageReference Include="HelixToolkit.Wpf" Version="2.25.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>

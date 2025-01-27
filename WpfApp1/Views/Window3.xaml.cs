@@ -8,19 +8,18 @@ namespace WpfApp1.Views;
 
 public partial class Window3 : System.Windows.Window
 {
-    public ICommand OpenFileCommand { get; }
     public Window3()
     {
         InitializeComponent();
         // LoadModelCommand = new RelayCommand(LoadModelButton_Click);
-        Load3dModel()
+        // Load3dModel();
     }
 
     private void Load3dModel()
     {
         var currentHelixObjReader = new ObjReader();
         // Model3DGroup MyModel = CurrentHelixObjReader.Read(@"D:\3DModel\dinosaur_FBX\dinosaur.fbx");
-        Model3DGroup MyModel = currentHelixObjReader.Read(@"D:\Download\ply\eyeball.ply");
+        // Model3DGroup MyModel = currentHelixObjReader.Read(@"D:\Download\ply\eyeball.ply");
         // model.Content = MyModel;
         //MyModel.Children.Add(MyModel);
 
