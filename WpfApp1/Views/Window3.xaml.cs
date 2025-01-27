@@ -2,8 +2,13 @@
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
+using HelixToolkit.SharpDX.Core.Model.Scene;
 using HelixToolkit.Wpf;
+using HelixToolkit.Wpf.SharpDX;
 using Microsoft.Win32;
+using DiffuseMaterial = System.Windows.Media.Media3D.DiffuseMaterial;
+using GeometryModel3D = System.Windows.Media.Media3D.GeometryModel3D;
+
 namespace WpfApp1.Views;
 
 public partial class Window3 : System.Windows.Window
@@ -15,17 +20,33 @@ public partial class Window3 : System.Windows.Window
         // Load3dModel();
     }
 
-    private void Load3dModel()
-    {
-        var currentHelixObjReader = new ObjReader();
-        // Model3DGroup MyModel = CurrentHelixObjReader.Read(@"D:\3DModel\dinosaur_FBX\dinosaur.fbx");
-        // Model3DGroup MyModel = currentHelixObjReader.Read(@"D:\Download\ply\eyeball.ply");
-        // model.Content = MyModel;
-        //MyModel.Children.Add(MyModel);
+        private void LoadModel()
+        {
+            var openFileDialog = new OpenFileDialog
+            {
+                Title = "Select a 3D Model",
+                Filter = "3D Model Files (*.obj;*.fbx)|*.obj;*.fbx|All Files (*.*)|*.*"
+            };
 
-        // HelixViewport3D.Children.Add(MyModel); // Add the new model
+            if (openFileDialog.ShowDialog() == true)
+            {
+                var reader = new HelixToolkit.Wpf.SharpDX.StudioReader();
+                var modelGroup = reader.Read(openFileDialog.FileName);
 
-    }
+                foreach (var model in modelGroup)
+                {
+                    var sharpModel = new MeshGeometryModel3D
+                    {
+                        Geometry = model.Geometry,
+                        Material = model.Material,
+                        Name = model.Name,
+                        Transform = new MatrixTransform3D(model.Transform.ToMatrix3D())
+                    };
+
+                    HelixViewport3D.Children.Add(sharpModel);
+                }
+            }
+        }
 
     private void LoadModelButton_Click(object sender, RoutedEventArgs routedEventArgs)
     {

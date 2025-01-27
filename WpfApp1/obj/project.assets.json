@@ -6014,7 +6014,8 @@
       "HelixToolkit.SharpDX.Core >= 2.26.0",
       "HelixToolkit.SharpDX.Core.Wpf >= 2.26.0",
       "HelixToolkit.Wpf >= 2.25.0",
-      "Newtonsoft.Json >= 13.0.3"
+      "Newtonsoft.Json >= 13.0.3",
+      "SharpDX >= 4.2.0"
     ]
   },
   "packageFolders": {
@@ -6075,6 +6076,10 @@
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.3, )"
+          },
+          "SharpDX": {
+            "target": "Package",
+            "version": "[4.2.0, )"
           }
         },
         "imports": [
