@@ -78,7 +78,6 @@ public partial class Window3 : System.Windows.Window
                 {
                     Content = model
                 };
-
                 HelixViewport3D.Children.Add(modelVisual); // Add the new model
             }
             catch (Exception ex)
