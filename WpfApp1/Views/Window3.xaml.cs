@@ -5,26 +5,11 @@ using System.Windows.Media.Media3D;
 using HelixToolkit.Wpf;
 using Microsoft.Win32;
 namespace WpfApp1.Views;
-
-public partial class Window3 : System.Windows.Window
+public partial class Window3 : Window
 {
     public Window3()
     {
         InitializeComponent();
-        // LoadModelCommand = new RelayCommand(LoadModelButton_Click);
-        // Load3dModel();
-    }
-
-    private void Load3dModel()
-    {
-        var currentHelixObjReader = new ObjReader();
-        // Model3DGroup MyModel = CurrentHelixObjReader.Read(@"D:\3DModel\dinosaur_FBX\dinosaur.fbx");
-        // Model3DGroup MyModel = currentHelixObjReader.Read(@"D:\Download\ply\eyeball.ply");
-        // model.Content = MyModel;
-        //MyModel.Children.Add(MyModel);
-
-        // HelixViewport3D.Children.Add(MyModel); // Add the new model
-
     }
 
     private void LoadModelButton_Click(object sender, RoutedEventArgs routedEventArgs)
@@ -37,42 +22,35 @@ public partial class Window3 : System.Windows.Window
 
         if (openFileDialog.ShowDialog() == true)
         {
-            var filePath = openFileDialog.FileName;
-
-            // Use ModelImporter to load the selected file
+            string filePath = openFileDialog.FileName;
             var importer = new ModelImporter();
+
             try
             {
-                var model = importer.Load(filePath);
-                // var material = new DiffuseMaterial(new SolidColorBrush(Colors.Gray));
-                // foreach (var geometry in model.Children.OfType<ModelVisual3D>())
-                // {
-                //     if (geometry.Content is GeometryModel3D geometryModel)
-                //     {
-                //         geometryModel.Material = material;
-                //     }
-                // }
+                // Load the 3D model
+                Model3DGroup models = importer.Load(filePath);
                 HelixViewport3D.Children.Clear(); // Clear previous models
-                // model.material = new DiffuseMaterial(new SolidColorBrush(Colors.Green));
-                // var material = new DiffuseMaterial(new SolidColorBrush(Colors.Red));
-                // model.Material = material;
                 
-                System.Windows.Media.Media3D.Material mat = MaterialHelper.CreateMaterial(
-                            new SolidColorBrush(Color.FromRgb(255, 255, 255))
+                // Define a default material (red color)
+                var defaultMaterial = new DiffuseMaterial(new SolidColorBrush(Colors.Red));
                 
-                //Replace myModel3DGroup by your Model3DGroup of your view....
-                foreach (System.Windows.Media.Media3D.GeometryModel3D geometryModel in  HelixViewport3D.Children)
+                foreach (var model in models.Children.OfType<GeometryModel3D>())
                 {
-                    geometryModel.Material = mat;
-                    geometryModel.BackMaterial = mat;
+                    // Assign material if it's missing
+                    if (model.Material == null)
+                    {
+                        model.Material = defaultMaterial;
+                        model.BackMaterial = defaultMaterial;
+                    }
                 }
-                var modelVisual = new ModelVisual3D
-                {
-                    Content = model
-                };
+                
+                // Wrap models into a ModelVisual3D
+                var modelVisual = new ModelVisual3D { Content = models };
+                HelixViewport3D.Children.Add(modelVisual);
+
+                // Ensure there's a light source
                 var light = new DirectionalLight(Colors.White, new Vector3D(-1, -1, -1));
-                // HelixViewport3D.Children.Add(light);
-                HelixViewport3D.Children.Add(modelVisual); // Add the new model
+                models.Children.Add(light);
             }
             catch (Exception ex)
             {
