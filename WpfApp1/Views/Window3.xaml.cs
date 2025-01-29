@@ -44,20 +44,34 @@ public partial class Window3 : System.Windows.Window
             try
             {
                 var model = importer.Load(filePath);
-                var material = new DiffuseMaterial(new SolidColorBrush(Colors.Gray));
-                foreach (var geometry in model.Children.OfType<ModelVisual3D>())
-                {
-                    if (geometry.Content is GeometryModel3D geometryModel)
-                    {
-                        geometryModel.Material = material;
-                    }
-                }
+                // var material = new DiffuseMaterial(new SolidColorBrush(Colors.Gray));
+                // foreach (var geometry in model.Children.OfType<ModelVisual3D>())
+                // {
+                //     if (geometry.Content is GeometryModel3D geometryModel)
+                //     {
+                //         geometryModel.Material = material;
+                //     }
+                // }
                 HelixViewport3D.Children.Clear(); // Clear previous models
+                // model.material = new DiffuseMaterial(new SolidColorBrush(Colors.Green));
+                // var material = new DiffuseMaterial(new SolidColorBrush(Colors.Red));
+                // model.Material = material;
+                
+                System.Windows.Media.Media3D.Material mat = MaterialHelper.CreateMaterial(
+                            new SolidColorBrush(Color.FromRgb(255, 255, 255))
+                
+                //Replace myModel3DGroup by your Model3DGroup of your view....
+                foreach (System.Windows.Media.Media3D.GeometryModel3D geometryModel in  HelixViewport3D.Children)
+                {
+                    geometryModel.Material = mat;
+                    geometryModel.BackMaterial = mat;
+                }
                 var modelVisual = new ModelVisual3D
                 {
                     Content = model
                 };
-
+                var light = new DirectionalLight(Colors.White, new Vector3D(-1, -1, -1));
+                // HelixViewport3D.Children.Add(light);
                 HelixViewport3D.Children.Add(modelVisual); // Add the new model
             }
             catch (Exception ex)

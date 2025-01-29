@@ -73,3 +73,15 @@ D:\code\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Views\Controls\InputControl.bam
 D:\code\WpfApp1\WpfApp1\bin\Debug\net8.0-windows\HelixToolkit.Wpf.dll
 D:\code\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Views\Window3.g.cs
 D:\code\WpfApp1\WpfApp1\obj\Debug\net8.0-windows\Views\Window3.baml
+D:\code\WpfApp1\WpfApp1\bin\Debug\net8.0-windows\Cyotek.Drawing.BitmapFont.dll
+D:\code\WpfApp1\WpfApp1\bin\Debug\net8.0-windows\HelixToolkit.dll
+D:\code\WpfApp1\WpfApp1\bin\Debug\net8.0-windows\HelixToolkit.SharpDX.Core.dll
+D:\code\WpfApp1\WpfApp1\bin\Debug\net8.0-windows\HelixToolkit.SharpDX.Core.Wpf.dll
+D:\code\WpfApp1\WpfApp1\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+D:\code\WpfApp1\WpfApp1\bin\Debug\net8.0-windows\SharpDX.dll
+D:\code\WpfApp1\WpfApp1\bin\Debug\net8.0-windows\SharpDX.D3DCompiler.dll
+D:\code\WpfApp1\WpfApp1\bin\Debug\net8.0-windows\SharpDX.Direct2D1.dll
+D:\code\WpfApp1\WpfApp1\bin\Debug\net8.0-windows\SharpDX.Direct3D11.dll
+D:\code\WpfApp1\WpfApp1\bin\Debug\net8.0-windows\SharpDX.Direct3D9.dll
+D:\code\WpfApp1\WpfApp1\bin\Debug\net8.0-windows\SharpDX.DXGI.dll
+D:\code\WpfApp1\WpfApp1\bin\Debug\net8.0-windows\SharpDX.Mathematics.dll
