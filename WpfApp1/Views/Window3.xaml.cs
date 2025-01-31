@@ -2,11 +2,15 @@
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
+using System.Windows.Threading;
 using HelixToolkit.Wpf;
 using Microsoft.Win32;
 namespace WpfApp1.Views;
 public partial class Window3 : Window
 {
+    private AxisAngleRotation3D _rotation;
+     private RotateTransform3D _rotateTransform;
+     private DispatcherTimer _rotationTimer;
     public Window3()
     {
         InitializeComponent();
@@ -19,19 +23,19 @@ public partial class Window3 : Window
     }
     private void RotateModel(Vector3D axis)
     {
-        if (_modelVisual.Content == null) return;
-        if (_modelVisual.Content is GeometryModel3D geometryModel)
-        {
-            // Create a RotateTransform3D
-            var rotateTransform = new RotateTransform3D();
-            var axisAngleRotation = new AxisAngleRotation3D(axis, RotationAngle);
-            rotateTransform.Rotation = axisAngleRotation;
-    
-            // Apply the transformation
-            var transformGroup = geometryModel.Transform as Transform3DGroup ?? new Transform3DGroup();
-            transformGroup.Children.Add(rotateTransform);
-            geometryModel.Transform = transformGroup;
-        }
+        // if (_modelVisual.Content is GeometryModel3D geometryModel)
+        // {
+        //     _modelVisual.Transform(axis);
+        //     // Create a RotateTransform3D
+        //     var rotateTransform = new RotateTransform3D();
+        //     var axisAngleRotation = new AxisAngleRotation3D(axis, RotationAngle);
+        //     rotateTransform.Rotation = axisAngleRotation;
+        //
+        //     // Apply the transformation
+        //     var transformGroup = geometryModel.Transform as Transform3DGroup ?? new Transform3DGroup();
+        //     transformGroup.Children.Add(rotateTransform);
+        //     geometryModel.Transform = transformGroup;
+        // }
     }
 
     private void LoadModelButton_Click(object sender, RoutedEventArgs routedEventArgs)
@@ -49,36 +53,49 @@ public partial class Window3 : Window
 
             try
             {
-                // Load the 3D model
-                Model3DGroup models = importer.Load(filePath);
-                HelixViewport3D.Children.Clear(); // Clear previous models
+                var models = importer.Load(filePath);
+                HelixViewport3D.Children.Clear();
                 
-                // Define a default material (red color)
-                var defaultMaterial = new DiffuseMaterial(new SolidColorBrush(Colors.Red));
-                
-                foreach (var model in models.Children.OfType<GeometryModel3D>())
-                {
-                    // Assign material if it's missing
-                    if (model.Material == null)
-                    {
-                        model.Material = defaultMaterial;
-                        model.BackMaterial = defaultMaterial;
-                    }
-                }
-                
-                // Wrap models into a ModelVisual3D
                 var modelVisual = new ModelVisual3D { Content = models };
-                _modelVisual = modelVisual;
                 HelixViewport3D.Children.Add(modelVisual);
 
-                // Ensure there's a light source
                 var light = new DirectionalLight(Colors.White, new Vector3D(-1, -1, -1));
                 models.Children.Add(light);
+                // ModelContainer.Content = models;
+                 StartRotation();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error loading model: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+    }
+    private void StartRotation()
+    {
+        if (_rotationTimer == null)
+        {
+            _rotationTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds(30)
+            };
+            _rotationTimer.Tick += (s, e) =>
+            {
+                if (_rotation != null) // Check before modifying
+                {
+                    _rotation.Angle += 2; // Rotate 2 degrees per tick
+                    if (_rotation.Angle >= 360) _rotation.Angle = 0; // Reset rotation
+                }
+            };
+            _rotationTimer.Start();
+        }
+        else
+        {
+            _rotationTimer.Start(); // Restart if already initialized
+        }
+    }
+    private void SetupRotation()
+    {
+        _rotation = new AxisAngleRotation3D(new Vector3D(0, 1, 0), 0); // Rotate around Y-axis
+        _rotateTransform = new RotateTransform3D(_rotation);
     }
 }

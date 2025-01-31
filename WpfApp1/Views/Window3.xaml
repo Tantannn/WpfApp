@@ -13,7 +13,19 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         
-        <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+
+        <helix:HelixViewport3D x:Name="HelixViewport3D" Grid.Column="1">
+            <!-- Camera -->
+            <helix:HelixViewport3D.Camera>
+                <PerspectiveCamera Position="0, 0, 5" LookDirection="0, 0, -1" UpDirection="0, 1, 0" FieldOfView="45" />
+            </helix:HelixViewport3D.Camera>
+
+            <!-- Lighting -->
+            <helix:DefaultLights />
+            <!-- <ModelVisual3D x:Name="ModelContainer"/> -->
+        </helix:HelixViewport3D>
+        
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
             <TextBlock Foreground="White">Loading Model</TextBlock>
             <ProgressBar Width="200" Height="30" IsIndeterminate="True" />
             <Menu VerticalAlignment="Top">
@@ -27,22 +39,13 @@
                 </MenuItem>
             </Menu>
         </StackPanel>
-
-        <helix:HelixViewport3D x:Name="HelixViewport3D" Grid.Column="1">
-            <!-- Camera -->
-            <helix:HelixViewport3D.Camera>
-                <PerspectiveCamera Position="0, 0, 5" LookDirection="0, 0, -1" UpDirection="0, 1, 0" FieldOfView="45" />
-            </helix:HelixViewport3D.Camera>
-
-            <!-- Lighting -->
-            <helix:DefaultLights />
-        </helix:HelixViewport3D>
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
-                    <Button Content="Rotate Left" Click="RotateLeft_Click"/>
-                    <Button Content="Rotate Right" Click="RotateRight_Click"/>
-                    <Button Content="Rotate Up" Click="RotateUp_Click"/>
-                    <Button Content="Rotate Down" Click="RotateDown_Click"/>
-                    <Button Content="Upload 3D Model" Click="UploadModel_Click"/>
-                </StackPanel>
+                <!-- <StackPanel Orientation="Vertical" HorizontalAlignment="Left"> -->
+                <!--     <Button Content="Rotate Left" Click="RotateLeft_Click"/> -->
+                <!--     ~1~ <Button Content="Rotate Right" Click="RotateRight_Click"/> @1@ -->
+                <!--     ~1~ <Button Content="Rotate Up" Click="RotateUp_Click"/> @1@ -->
+                <!--     ~1~ <Button Content="Rotate Down" Click="RotateDown_Click"/> @1@ -->
+                <!--     ~1~ <Button Content="Upload 3D Model" Click="UploadModel_Click"/> @1@ -->
+                <!-- </StackPanel> -->
+ 
     </Grid>
 </Window>
