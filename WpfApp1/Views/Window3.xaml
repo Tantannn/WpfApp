@@ -37,5 +37,12 @@
             <!-- Lighting -->
             <helix:DefaultLights />
         </helix:HelixViewport3D>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                    <Button Content="Rotate Left" Click="RotateLeft_Click"/>
+                    <Button Content="Rotate Right" Click="RotateRight_Click"/>
+                    <Button Content="Rotate Up" Click="RotateUp_Click"/>
+                    <Button Content="Rotate Down" Click="RotateDown_Click"/>
+                    <Button Content="Upload 3D Model" Click="UploadModel_Click"/>
+                </StackPanel>
     </Grid>
 </Window>

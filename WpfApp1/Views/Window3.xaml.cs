@@ -11,6 +11,28 @@ public partial class Window3 : Window
     {
         InitializeComponent();
     }
+     private const double RotationAngle = 10;
+     private GeometryModel3D _modelVisual;
+    private void RotateLeft_Click(object sender, RoutedEventArgs e)
+    {
+        RotateModel(new Vector3D(0, 1, 0)); // Rotate around Y-axis
+    }
+    private void RotateModel(Vector3D axis)
+    {
+        if (_modelVisual.Content == null) return;
+        if (_modelVisual.Content is GeometryModel3D geometryModel)
+        {
+            // Create a RotateTransform3D
+            var rotateTransform = new RotateTransform3D();
+            var axisAngleRotation = new AxisAngleRotation3D(axis, RotationAngle);
+            rotateTransform.Rotation = axisAngleRotation;
+    
+            // Apply the transformation
+            var transformGroup = geometryModel.Transform as Transform3DGroup ?? new Transform3DGroup();
+            transformGroup.Children.Add(rotateTransform);
+            geometryModel.Transform = transformGroup;
+        }
+    }
 
     private void LoadModelButton_Click(object sender, RoutedEventArgs routedEventArgs)
     {
@@ -46,6 +68,7 @@ public partial class Window3 : Window
                 
                 // Wrap models into a ModelVisual3D
                 var modelVisual = new ModelVisual3D { Content = models };
+                _modelVisual = modelVisual;
                 HelixViewport3D.Children.Add(modelVisual);
 
                 // Ensure there's a light source
