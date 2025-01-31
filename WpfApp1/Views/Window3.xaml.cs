@@ -11,6 +11,7 @@ public partial class Window3 : Window
     private AxisAngleRotation3D _rotation;
      private RotateTransform3D _rotateTransform;
      private DispatcherTimer _rotationTimer;
+     private Model3DGroup models;
     public Window3()
     {
         InitializeComponent();
@@ -53,7 +54,7 @@ public partial class Window3 : Window
 
             try
             {
-                var models = importer.Load(filePath);
+                models = importer.Load(filePath);
                 HelixViewport3D.Children.Clear();
                 
                 var modelVisual = new ModelVisual3D { Content = models };
@@ -62,7 +63,7 @@ public partial class Window3 : Window
                 var light = new DirectionalLight(Colors.White, new Vector3D(-1, -1, -1));
                 models.Children.Add(light);
                 // ModelContainer.Content = models;
-                 StartRotation();
+                 // StartRotation();
             }
             catch (Exception ex)
             {
@@ -97,5 +98,24 @@ public partial class Window3 : Window
     {
         _rotation = new AxisAngleRotation3D(new Vector3D(0, 1, 0), 0); // Rotate around Y-axis
         _rotateTransform = new RotateTransform3D(_rotation);
+    }
+    private void Viewport_MouseDown(object sender, MouseButtonEventArgs e)
+    {
+        // if (e.LeftButton == MouseButtonState.Pressed)
+        // {
+        //     var camera = HelixViewport3D.Camera as PerspectiveCamera;
+        //     if (camera != null)
+        //     {
+        //         // Move camera backward
+        //         camera.Position = new Point3D(camera.Position.X, camera.Position.Y, camera.Position.Z - 2);
+        //     }
+        //             if (models.Transform is RotateTransform3D rotateTransform)
+        //             {
+        //                 if (rotateTransform.Rotation is AxisAngleRotation3D rotation)
+        //                 {
+        //                     rotation.Angle += 15; // Rotate model on each click
+        //                 }
+        //             }
+        // }
     }
 }

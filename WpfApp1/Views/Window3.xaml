@@ -14,7 +14,7 @@
         </Grid.ColumnDefinitions>
         
 
-        <helix:HelixViewport3D x:Name="HelixViewport3D" Grid.Column="1">
+        <helix:HelixViewport3D x:Name="HelixViewport3D" MouseDown="Viewport_MouseDown" Grid.Column="1">
             <!-- Camera -->
             <helix:HelixViewport3D.Camera>
                 <PerspectiveCamera Position="0, 0, 5" LookDirection="0, 0, -1" UpDirection="0, 1, 0" FieldOfView="45" />
