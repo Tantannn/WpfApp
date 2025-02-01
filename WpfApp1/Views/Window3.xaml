@@ -8,13 +8,7 @@
         mc:Ignorable="d"
         Title="Window3" Height="550" Width="800">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="350" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        
-
-        <helix:HelixViewport3D x:Name="HelixViewport3D" MouseDown="Viewport_MouseDown" Grid.Column="1">
+        <helix:HelixViewport3D x:Name="HelixViewport3D" >
             <!-- Camera -->
             <helix:HelixViewport3D.Camera>
                 <PerspectiveCamera Position="0, 0, 5" LookDirection="0, 0, -1" UpDirection="0, 1, 0" FieldOfView="45" />
@@ -25,27 +19,19 @@
             <!-- <ModelVisual3D x:Name="ModelContainer"/> -->
         </helix:HelixViewport3D>
         
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+        <StackPanel >
             <TextBlock Foreground="White">Loading Model</TextBlock>
-            <ProgressBar Width="200" Height="30" IsIndeterminate="True" />
             <Menu VerticalAlignment="Top">
                 <MenuItem Header="File">
                     <MenuItem Click="LoadModelButton_Click" Header="Open File" />
-                    <MenuItem Command="{Binding ExportCommand}" Header="Export" />
+                    <!-- <MenuItem Command="{Binding ExportCommand}" Header="Export" /> -->
                 </MenuItem>
-                <MenuItem Header="Edit">
-                    <MenuItem Command="{Binding CopyAsBitmapCommand}" Header="Copy As Bitmap (Window Size)" />
-                    <MenuItem Command="{Binding CopyAsHiresBitmapCommand}" Header="Copy as Hiresolution Bitmap (1920x1080)" />
-                </MenuItem>
+                <!-- <MenuItem Header="Edit"> -->
+                <!--     <MenuItem Command="{Binding CopyAsBitmapCommand}" Header="Copy As Bitmap (Window Size)" /> -->
+                <!--     <MenuItem Command="{Binding CopyAsHiresBitmapCommand}" Header="Copy as Hiresolution Bitmap (1920x1080)" /> -->
+                <!-- </MenuItem> -->
             </Menu>
         </StackPanel>
-                <!-- <StackPanel Orientation="Vertical" HorizontalAlignment="Left"> -->
-                <!--     <Button Content="Rotate Left" Click="RotateLeft_Click"/> -->
-                <!--     ~1~ <Button Content="Rotate Right" Click="RotateRight_Click"/> @1@ -->
-                <!--     ~1~ <Button Content="Rotate Up" Click="RotateUp_Click"/> @1@ -->
-                <!--     ~1~ <Button Content="Rotate Down" Click="RotateDown_Click"/> @1@ -->
-                <!--     ~1~ <Button Content="Upload 3D Model" Click="UploadModel_Click"/> @1@ -->
-                <!-- </StackPanel> -->
- 
+            <ProgressBar Name="progressBar" Width="200" Height="30" IsIndeterminate="True" Visibility="Collapsed" />
     </Grid>
 </Window>
