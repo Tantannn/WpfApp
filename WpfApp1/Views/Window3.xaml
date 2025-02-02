@@ -20,7 +20,6 @@
         </helix:HelixViewport3D>
         
         <StackPanel >
-            <TextBlock Foreground="White">Loading Model</TextBlock>
             <Menu VerticalAlignment="Top">
                 <MenuItem Header="File">
                     <MenuItem Click="LoadModelButton_Click" Header="Open File" />
