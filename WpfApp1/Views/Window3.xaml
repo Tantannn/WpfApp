@@ -32,6 +32,6 @@
                 <!-- </MenuItem> -->
             </Menu>
         </StackPanel>
-            <ProgressBar Name="progressBar" Width="200" Height="30" IsIndeterminate="True" Visibility="Collapsed" />
+            <ProgressBar Name="ProgressBar" Width="200" Height="30" IsIndeterminate="True" Visibility="Collapsed" />
     </Grid>
 </Window>

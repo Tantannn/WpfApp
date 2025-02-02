@@ -27,7 +27,7 @@ public partial class Window3 : Window
             var filePath = openFileDialog.FileName;
             var importer = new ModelImporter();
 
-            progressBar.Visibility = Visibility.Visible;
+            ProgressBar.Visibility = Visibility.Visible;
             try
             {
                 var models = importer.Load(filePath);
@@ -46,7 +46,7 @@ public partial class Window3 : Window
             }
             finally
             {
-                progressBar.Visibility = Visibility.Collapsed;
+                ProgressBar.Visibility = Visibility.Collapsed;
             }
         }
     }
