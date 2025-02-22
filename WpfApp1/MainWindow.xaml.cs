@@ -100,6 +100,11 @@ namespace WpfApp1
             var window3 = new Window3();
             window3.Show();
         }
+
+        private void PlayNote(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }
 
