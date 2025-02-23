@@ -17,13 +17,14 @@
 
         <!-- Menu -->
         <Menu Grid.Row="0">
-            <MenuItem Header="File" PreviewMouseLeftButtonDown="MenuItem_PreviewMouseLeftButtonDown"  x:Name="MainMenu">
+            <MenuItem Header="File" PreviewMouseLeftButtonDown="MenuItem_PreviewMouseLeftButtonDown" x:Name="MainMenu">
                 <MenuItem Header="Open" />
                 <MenuItem Header="Save" />
             </MenuItem>
         </Menu>
         <StackPanel Grid.Row="0" Margin="10">
-        <controls:CustomInputControl x:Name="CustomInputControlInstance" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <controls:CustomInputControl x:Name="CustomInputControlInstance" HorizontalAlignment="Center"
+                                         VerticalAlignment="Center" />
             <TextBlock Text="Hello, world!" FontSize="56" />
             <TextBlock>Just another "<TextBlock Text="Hello, world!" />" example, but with resources!</TextBlock>
             <TextBox x:Name="InputTextBox"
@@ -38,22 +39,52 @@
             <!-- <Button VerticalAlignment="Bottom" Height="30px" Width="100px" Click="Button_Click" Content="something" /> -->
             <ListBox x:Name="TextListBox" Width="100px" MinHeight="50px" Margin="0px 50px 0px 100px"
                      VerticalAlignment="Bottom" />
-        <Button Height="35px" Width="100px" Content="What?" Click="What_Button"/>
-        <Button Height="35px" Width="100px" Content="3D stuffs" Click="Open_3D_Stuffs"/>
-        <ComboBox Height="23" Margin="0 50px" Name="ComboBox1" SelectionChanged="ComboBox1_SelectionChanged" Width="120">
-            <ComboBoxItem Content="Alice"/>
-            <ComboBoxItem Content="Bob"/>
-            <ComboBoxItem Content="Charlie"/>
-        </ComboBox>
+            <Button Height="35px" Width="100px" Content="What?" Click="What_Button" />
+            <Button Height="35px" Width="100px" Content="3D stuffs" Click="Open_3D_Stuffs" />
+            <ComboBox Height="23" Margin="0 50px" Name="ComboBox1" SelectionChanged="ComboBox1_SelectionChanged"
+                      Width="120">
+                <ComboBoxItem Content="Alice" />
+                <ComboBoxItem Content="Bob" />
+                <ComboBoxItem Content="Charlie" />
+            </ComboBox>
+            <ComboBox x:Name="ScaleSelector" SelectedIndex="0">
+                <ComboBoxItem Content="C Major" />
+                <ComboBoxItem Content="A Minor" />
+                <ComboBoxItem Content="Chromatic" />
+            </ComboBox>
+            <Button Content="Generate Scale" Click="GenerateScale_Click" />
+            <TextBlock x:Name="ScaleNotesDisplay" Margin="10" />
         </StackPanel>
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Button Content="A" Click="PlayNote" Tag="C.wav" Width="50" Height="150"/>
-            <Button Content="B" Click="PlayNote" Tag="D.wav" Width="50" Height="150"/>
-            <Button Content="C" Click="PlayNote" Tag="C.wav" Width="50" Height="150"/>
-            <Button Content="D" Click="PlayNote" Tag="D.wav" Width="50" Height="150"/>
-            <Button Content="E" Click="PlayNote" Tag="E.wav" Width="50" Height="150"/>
-            <Button Content="F" Click="PlayNote" Tag="E.wav" Width="50" Height="150"/>
-            <Button Content="G" Click="PlayNote" Tag="E.wav" Width="50" Height="150"/>
-        </StackPanel>
+        <Grid Grid.Row="1">
+            <!-- White Keys -->
+            <StackPanel Orientation="Horizontal">
+                <Button Content="C" Click="PlayNote" Tag="C.wav" Width="50" Height="150" Margin="0,0,0,0" />
+                <Button Content="D" Click="PlayNote" Tag="D.wav" Width="50" Height="150" Margin="0,0,0,0" />
+                <Button Content="E" Click="PlayNote" Tag="E.wav" Width="50" Height="150" Margin="0,0,0,0" />
+                <Button Content="F" Click="PlayNote" Tag="F.wav" Width="50" Height="150" Margin="0,0,0,0" />
+                <Button Content="G" Click="PlayNote" Tag="G.wav" Width="50" Height="150" Margin="0,0,0,0" />
+                <Button Content="A" Click="PlayNote" Tag="A.wav" Width="50" Height="150" Margin="0,0,0,0" />
+                <Button Content="B" Click="PlayNote" Tag="B.wav" Width="50" Height="150" Margin="0,0,0,0" />
+            </StackPanel>
+
+            <!-- Black Keys -->
+            <StackPanel Orientation="Horizontal" Margin="15,0,0,0">
+                <Button Content="C#" Click="PlayNote" Tag="C#.wav" Width="30" Height="100" Background="Black"
+                        Foreground="White" Margin="20,0,0,0" />
+                <Button Content="D#" Click="PlayNote" Tag="D#.wav" Width="30" Height="100" Background="Black"
+                        Foreground="White" Margin="20,0,0,0" />
+                <Button Content="" Width="50" Background="Transparent" IsHitTestVisible="False" />
+                <!-- Spacer for E -->
+                <Button Content="F#" Click="PlayNote" Tag="F#.wav" Width="30" Height="100" Background="Black"
+                        Foreground="White" Margin="20,0,0,0" />
+                <Button Content="G#" Click="PlayNote" Tag="G#.wav" Width="30" Height="100" Background="Black"
+                        Foreground="White" Margin="20,0,0,0" />
+                <Button Content="A#" Click="PlayNote" Tag="A#.wav" Width="30" Height="100" Background="Black"
+                        Foreground="White" Margin="20,0,0,0" />
+                <Button Content="" Width="50" Background="Transparent" IsHitTestVisible="False" />
+                <!-- Spacer for B -->
+            </StackPanel>
+        </Grid>
+
     </Grid>
 </Window>
