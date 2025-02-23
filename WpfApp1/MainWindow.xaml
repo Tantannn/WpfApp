@@ -57,7 +57,7 @@
         </StackPanel>
         <Grid Grid.Row="1">
             <!-- White Keys -->
-            <StackPanel Orientation="Horizontal">
+            <StackPanel  x:Name="PianoKeys" Orientation="Horizontal">
                 <Button Content="C" Click="PlayNote" Tag="C.wav" Width="50" Height="150" Margin="0,0,0,0" />
                 <Button Content="D" Click="PlayNote" Tag="D.wav" Width="50" Height="150" Margin="0,0,0,0" />
                 <Button Content="E" Click="PlayNote" Tag="E.wav" Width="50" Height="150" Margin="0,0,0,0" />
