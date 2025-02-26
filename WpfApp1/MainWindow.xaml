@@ -47,13 +47,12 @@
                 <ComboBoxItem Content="Bob" />
                 <ComboBoxItem Content="Charlie" />
             </ComboBox>
-            <ComboBox x:Name="ScaleSelector" SelectedIndex="0">
-                <ComboBoxItem Content="C Major" />
-                <ComboBoxItem Content="A Minor" />
-                <ComboBoxItem Content="Chromatic" />
-            </ComboBox>
-            <Button Content="Generate Scale" Click="GenerateScale_Click" />
+            <TextBox x:Name="ScaleInput" PlaceholderText="Enter scale (e.g., C Major, A Minor)" Margin="10" />
+            <Button Content="Highlight Scale" Click="HighlightScale_Click" Margin="10" />
             <TextBlock x:Name="ScaleNotesDisplay" Margin="10" />
+            <StackPanel x:Name="PianoKeys" Orientation="Horizontal" Margin="10">
+            <!-- Piano keys will be added here -->
+        </StackPanel>
         </StackPanel>
         <Grid Grid.Row="1">
             <!-- White Keys -->

@@ -198,6 +198,7 @@ namespace WpfApp1
                 {
                     key.Background = Brushes.White; // Reset other keys
                 }
+                
             }
         }
         
