@@ -51,7 +51,6 @@ namespace WpfApp1
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-
             var window2 = new Window2();
             window2.Show();
         }
@@ -79,13 +78,14 @@ namespace WpfApp1
                 e.Handled = true;
             }
         }
+
         // https://dummyapi.online/api/movies
         private void What_Button(object sender, RoutedEventArgs e)
         {
             var window1 = new Window1();
             window1.Show();
         }
-        
+
         private void ComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ComboBox1.SelectedItem is ComboBoxItem selectedItem)
@@ -101,13 +101,14 @@ namespace WpfApp1
             var window3 = new Window3();
             window3.Show();
         }
-        
+
         Dictionary<string, int[]> scales = new Dictionary<string, int[]>
         {
             { "C Major", new int[] { 2, 2, 1, 2, 2, 2, 1 } }, // Whole, Whole, Half, Whole, Whole, Whole, Half
             { "A Minor", new int[] { 2, 1, 2, 2, 1, 2, 2 } }, // Whole, Half, Whole, Whole, Half, Whole, Whole
             { "Chromatic", new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } } // All half steps
         };
+
         Dictionary<string, int> noteToIndex = new Dictionary<string, int>
         {
             { "C", 0 },
@@ -123,7 +124,7 @@ namespace WpfApp1
             { "A#", 10 },
             { "B", 11 }
         };
-        
+
         Dictionary<int, string> indexToNote = new Dictionary<int, string>
         {
             { 0, "C" },
@@ -160,6 +161,7 @@ namespace WpfApp1
                 }
             }
         }
+
         List<string> GenerateScale(string rootNote, string scaleName)
         {
             List<string> scaleNotes = new List<string>();
@@ -167,7 +169,7 @@ namespace WpfApp1
             {
                 int[] intervals = scales[scaleName];
                 int currentIndex = noteToIndex[rootNote];
-        
+
                 scaleNotes.Add(rootNote);
                 foreach (int interval in intervals)
                 {
@@ -175,17 +177,20 @@ namespace WpfApp1
                     scaleNotes.Add(indexToNote[currentIndex]);
                 }
             }
+
             return scaleNotes;
         }
+
         private void GenerateScale_Click(object sender, RoutedEventArgs e)
-         {
-             string selectedScale = (ScaleSelector.SelectedItem as ComboBoxItem)?.Content.ToString();
-             string rootNote = "C"; // You can make this dynamic with another ComboBox
-         
-             List<string> scaleNotes = GenerateScale(rootNote, selectedScale);
-             ScaleNotesDisplay.Text = string.Join(", ", scaleNotes);
-             HighlightScaleKeys(scaleNotes);
-         }
+        {
+            var selectedScale = (ScaleSelector.SelectedItem as ComboBoxItem)?.Content.ToString();
+            var rootNote = "C"; // You can make this dynamic with another ComboBox
+
+            List<string> scaleNotes = GenerateScale(rootNote, selectedScale);
+            ScaleNotesDisplay.Text = string.Join(", ", scaleNotes);
+            HighlightScaleKeys(scaleNotes);
+        }
+
         private void HighlightScaleKeys(List<string> scaleNotes)
         {
             foreach (Button key in PianoKeys.Children)
@@ -198,10 +203,7 @@ namespace WpfApp1
                 {
                     key.Background = Brushes.White; // Reset other keys
                 }
-                
             }
         }
-        
     }
 }
-
