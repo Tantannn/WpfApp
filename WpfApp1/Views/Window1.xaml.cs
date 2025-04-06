@@ -20,7 +20,5 @@ public partial class Window1 : System.Windows.Window
     {
         TopFrame.Content = null;
         BottomFrame.Navigate(new Page2());
-
-        
     }
 }

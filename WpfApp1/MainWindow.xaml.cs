@@ -102,14 +102,14 @@ namespace WpfApp1
             window3.Show();
         }
 
-        Dictionary<string, int[]> scales = new Dictionary<string, int[]>
+        private readonly Dictionary<string, int[]> _scales = new Dictionary<string, int[]>
         {
-            { "C Major", new int[] { 2, 2, 1, 2, 2, 2, 1 } }, // Whole, Whole, Half, Whole, Whole, Whole, Half
-            { "A Minor", new int[] { 2, 1, 2, 2, 1, 2, 2 } }, // Whole, Half, Whole, Whole, Half, Whole, Whole
-            { "Chromatic", new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } } // All half steps
+            { "Major", [2, 2, 1, 2, 2, 2, 1] }, // Whole, Whole, Half, Whole, Whole, Whole, Half
+            { "Minor", [2, 1, 2, 2, 1, 2, 2] }, // Whole, Half, Whole, Whole, Half, Whole, Whole
+            { "Chromatic", [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] } // All half steps
         };
 
-        Dictionary<string, int> noteToIndex = new Dictionary<string, int>
+        private readonly Dictionary<string, int> _noteToIndex = new Dictionary<string, int>
         {
             { "C", 0 },
             { "C#", 1 },
@@ -125,7 +125,7 @@ namespace WpfApp1
             { "B", 11 }
         };
 
-        Dictionary<int, string> indexToNote = new Dictionary<int, string>
+        private readonly Dictionary<int, string> _indexToNote = new Dictionary<int, string>
         {
             { 0, "C" },
             { 1, "C#" },
@@ -143,66 +143,99 @@ namespace WpfApp1
 
         private void PlayNote(object sender, RoutedEventArgs e)
         {
-            Button button = sender as Button;
-            if (button != null)
+            if (sender is Button button)
             {
-                string soundFile = button.Tag as string;
-                if (!string.IsNullOrEmpty(soundFile))
-                {
-                    try
-                    {
-                        var player = new SoundPlayer($"Sounds/{soundFile}");
-                        player.Play();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error playing sound: {ex.Message}");
-                    }
-                }
+                // string? soundFile = button.Tag as string;
+                // if (!string.IsNullOrEmpty(soundFile))
+                // {
+                //     try
+                //     {
+                //         var player = new SoundPlayer($"Sounds/{soundFile}");
+                //         player.Play();
+                //     }
+                //     catch (Exception ex)
+                //     {
+                //         MessageBox.Show($"Error playing sound: {ex.Message}");
+                //     }
+                // }
             }
         }
 
-        List<string> GenerateScale(string rootNote, string scaleName)
+        private List<string> GenerateScale(string rootNote, string scaleName)
         {
-            List<string> scaleNotes = new List<string>();
-            if (scales.ContainsKey(scaleName) && noteToIndex.ContainsKey(rootNote))
+            var scaleNotes = new List<string>();
+            if (_scales.ContainsKey(scaleName) && _noteToIndex.ContainsKey(rootNote!))
             {
-                int[] intervals = scales[scaleName];
-                int currentIndex = noteToIndex[rootNote];
+                var intervals = _scales[scaleName];
+                var currentIndex = _noteToIndex[rootNote];
 
                 scaleNotes.Add(rootNote);
-                foreach (int interval in intervals)
+                foreach (var interval in intervals)
                 {
-                    currentIndex = (currentIndex + interval) % 12; // Wrap around using modulo 12
-                    scaleNotes.Add(indexToNote[currentIndex]);
+                    currentIndex = (currentIndex + interval) % 12;
+                    scaleNotes.Add(_indexToNote[currentIndex]);
                 }
             }
 
             return scaleNotes;
         }
 
-        private void GenerateScale_Click(object sender, RoutedEventArgs e)
+        private void HighlightScale_Click(object sender, RoutedEventArgs e)
         {
-            var selectedScale = (ScaleSelector.SelectedItem as ComboBoxItem)?.Content.ToString();
-            var rootNote = "C"; // You can make this dynamic with another ComboBox
+            var inputText = ScaleInput.Text;
+            if (string.IsNullOrEmpty(inputText))
+            {
+                MessageBox.Show("Please enter a scale (e.g., C Major, A Minor).");
+                return;
+            }
 
-            List<string> scaleNotes = GenerateScale(rootNote, selectedScale);
-            ScaleNotesDisplay.Text = string.Join(", ", scaleNotes);
+            // Split the input into root note and scale type
+            var parts = inputText.Split(' ');
+            // if (parts.Length != 2)
+            // {
+            //     MessageBox.Show("Invalid input. Please enter in the format 'C Major' or 'A Minor'.");
+            //     return;
+            // }
+
+            string rootNote = parts[0].ToUpper(); // Ensure the root note is uppercase
+            string scaleType = parts[1].ToLower(); // Ensure the scale type is lowercase
+
+            // Generate the scale notes
+            List<string> scaleNotes = GenerateScale(rootNote, scaleType);
+            // if (scaleNotes == null || scaleNotes.Count == 0)
+            // {
+            //     MessageBox.Show("Invalid scale. Please check your input.");
+            //     return;
+            // }
+
+            // Display the scale notes
+            // ScaleNotesDisplay.Text = string.Join(", ", scaleNotes);
+
+            // Highlight the keys on the piano
             HighlightScaleKeys(scaleNotes);
+            // var inputScale = 
         }
+
+        // private void
+
+        // private void GenerateScale_Click(object sender, RoutedEventArgs e)
+        // {
+        //     var selectedScale = (ScaleSelector.SelectedItem as ComboBoxItem)?.Content.ToString();
+        //     var rootNote = "C"; // You can make this dynamic with another ComboBox
+        //
+        //     List<string> scaleNotes = GenerateScale(rootNote, selectedScale);
+        //     ScaleNotesDisplay.Text = string.Join(", ", scaleNotes);
+        //     HighlightScaleKeys(scaleNotes);
+        // }
 
         private void HighlightScaleKeys(List<string> scaleNotes)
         {
             foreach (Button key in PianoKeys.Children)
             {
-                if (scaleNotes.Contains(key.Content.ToString()))
-                {
-                    key.Background = Brushes.LightGreen; // Highlight keys in the scale
-                }
-                else
-                {
-                    key.Background = Brushes.White; // Reset other keys
-                }
+                key.Background = scaleNotes.Contains(key.Content.ToString())
+                    ? Brushes.LightGreen
+                    : // Highlight keys in the scale
+                    Brushes.White; // Reset other keys
             }
         }
     }
