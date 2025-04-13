@@ -15,6 +15,7 @@
             <RowDefinition Height="*" />    <!-- For the main content -->
         </Grid.RowDefinitions>
 
+
         <!-- Menu -->
         <Menu Grid.Row="0">
             <MenuItem Header="File" PreviewMouseLeftButtonDown="MenuItem_PreviewMouseLeftButtonDown" x:Name="MainMenu">
