@@ -104,9 +104,9 @@ namespace WpfApp1
 
         private readonly Dictionary<string, int[]> _scales = new Dictionary<string, int[]>
         {
-            { "Major", [2, 2, 1, 2, 2, 2, 1] }, // Whole, Whole, Half, Whole, Whole, Whole, Half
-            { "Minor", [2, 1, 2, 2, 1, 2, 2] }, // Whole, Half, Whole, Whole, Half, Whole, Whole
-            { "Chromatic", [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] } // All half steps
+            { "major", [2, 2, 1, 2, 2, 2, 1] }, // Whole, Whole, Half, Whole, Whole, Whole, Half
+            { "minor", [2, 1, 2, 2, 1, 2, 2] }, // Whole, Half, Whole, Whole, Half, Whole, Whole
+            { "chromatic", [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] } // All half steps
         };
 
         private readonly Dictionary<string, int> _noteToIndex = new Dictionary<string, int>
@@ -166,7 +166,7 @@ namespace WpfApp1
             var scaleNotes = new List<string>();
             if (_scales.ContainsKey(scaleName) && _noteToIndex.ContainsKey(rootNote!))
             {
-                var intervals = _scales[scaleName];
+                var intervals = _scales[scaleName.ToLower()];
                 var currentIndex = _noteToIndex[rootNote];
 
                 scaleNotes.Add(rootNote);
