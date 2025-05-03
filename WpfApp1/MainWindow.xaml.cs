@@ -163,18 +163,17 @@ namespace WpfApp1
 
         private List<string> GenerateScale(string rootNote, string scaleName)
         {
-            var scaleNotes = new List<string>();
-            if (_scales.ContainsKey(scaleName) && _noteToIndex.ContainsKey(rootNote!))
+            if (!_scales.TryGetValue(scaleName, out var intervals) ||
+                !_noteToIndex.TryGetValue(rootNote, out var currentIndex))
             {
-                var intervals = _scales[scaleName.ToLower()];
-                var currentIndex = _noteToIndex[rootNote];
+                return new List<string>(); // Invalid input → empty list
+            }
 
-                scaleNotes.Add(rootNote);
-                foreach (var interval in intervals)
-                {
-                    currentIndex = (currentIndex + interval) % 12;
-                    scaleNotes.Add(_indexToNote[currentIndex]);
-                }
+            var scaleNotes = new List<string> { rootNote };
+            foreach (var interval in intervals)
+            {
+                currentIndex = (currentIndex + interval) % 12;
+                scaleNotes.Add(_indexToNote[currentIndex]);
             }
 
             return scaleNotes;
@@ -182,38 +181,37 @@ namespace WpfApp1
 
         private void HighlightScale_Click(object sender, RoutedEventArgs e)
         {
-            var inputText = ScaleInput.Text;
+            var inputText = ScaleInput.Text.Trim();
             if (string.IsNullOrEmpty(inputText))
             {
-                MessageBox.Show("Please enter a scale (e.g., C Major, A Minor).");
+                MessageBox.Show("Please enter a scale (e.g., 'C Major').");
                 return;
             }
 
-            // Split the input into root note and scale type
             var parts = inputText.Split(' ');
-            // if (parts.Length != 2)
-            // {
-            //     MessageBox.Show("Invalid input. Please enter in the format 'C Major' or 'A Minor'.");
-            //     return;
-            // }
+            if (parts.Length < 2)
+            {
+                MessageBox.Show("Invalid format. Use: '[Note] [Scale]' (e.g., 'C Major').");
+                return;
+            }
 
-            string rootNote = parts[0].ToUpper(); // Ensure the root note is uppercase
-            string scaleType = parts[1].ToLower(); // Ensure the scale type is lowercase
+            string rootNote = parts[0].ToUpper();
+            string scaleType = parts[1].ToLower();
 
-            // Generate the scale notes
-            List<string> scaleNotes = GenerateScale(rootNote, scaleType);
-            // if (scaleNotes == null || scaleNotes.Count == 0)
-            // {
-            //     MessageBox.Show("Invalid scale. Please check your input.");
-            //     return;
-            // }
+            if (!_noteToIndex.ContainsKey(rootNote))
+            {
+                MessageBox.Show($"Invalid note: {rootNote}. Use C, C#, D, etc.");
+                return;
+            }
 
-            // Display the scale notes
-            // ScaleNotesDisplay.Text = string.Join(", ", scaleNotes);
+            if (!_scales.ContainsKey(scaleType))
+            {
+                MessageBox.Show($"Invalid scale: {scaleType}. Use 'Major', 'Minor', or 'Chromatic'.");
+                return;
+            }
 
-            // Highlight the keys on the piano
+            var scaleNotes = GenerateScale(rootNote, scaleType);
             HighlightScaleKeys(scaleNotes);
-            // var inputScale = 
         }
 
         // private void
@@ -227,15 +225,50 @@ namespace WpfApp1
         //     ScaleNotesDisplay.Text = string.Join(", ", scaleNotes);
         //     HighlightScaleKeys(scaleNotes);
         // }
+        public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj != null)
+            {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+                    if (child != null && child is T)
+                    {
+                        yield return (T)child;
+                    }
+
+                    foreach (T childOfChild in FindVisualChildren<T>(child))
+                    {
+                        yield return childOfChild;
+                    }
+                }
+            }
+        }
 
         private void HighlightScaleKeys(List<string> scaleNotes)
         {
-            foreach (Button key in PianoKeys.Children)
+            // Find all buttons in the visual tree
+            var buttons = FindVisualChildren<Button>(PianoKeys);
+
+            foreach (Button key in buttons)
             {
-                key.Background = scaleNotes.Contains(key.Content.ToString())
-                    ? Brushes.LightGreen
-                    : // Highlight keys in the scale
-                    Brushes.White; // Reset other keys
+                if (string.IsNullOrEmpty(key.Content?.ToString())) continue;
+
+                var isBlackKey = key.Content.ToString().Contains("#");
+
+                if (scaleNotes.Contains(key.Content.ToString()))
+                {
+                    key.Background = Brushes.LightGreen;
+                    key.Foreground = Brushes.Black;
+                    key.BorderBrush = Brushes.Gold;
+                    key.BorderThickness = new Thickness(2);
+                }
+                else
+                {
+                    key.BorderBrush = Brushes.Transparent;
+                    key.Background = isBlackKey ? Brushes.Black : Brushes.White;
+                    key.Foreground = isBlackKey ? Brushes.White : Brushes.Black;
+                }
             }
         }
     }
